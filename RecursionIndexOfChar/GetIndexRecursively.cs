@@ -26,7 +26,12 @@ namespace RecursionIndexOfChar
 
         public static int FindChar(string str, char value, int count, int startIndex = 0)
         {
-            if (startIndex >= str?.Length)
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (startIndex >= str.Length)
             {
                 return -1;
             }
