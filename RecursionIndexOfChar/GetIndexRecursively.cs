@@ -6,16 +6,45 @@ namespace RecursionIndexOfChar
     {
         public static int GetIndexOfChar(string str, char value)
         {
-            // TODO #1. Analyze the implementation of "GetLastIndexOfChar(string, char)" method, and implement the method using recursion.
-            // The method should return the position of a "value" char in the "str" string. If "str" string has no "value" char then returns -1.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            return FindChar(str, value, str.Length);
         }
 
         public static int GetIndexOfChar(string str, char value, int startIndex, int count)
         {
-            // TODO #2. Analyze the implementation of "GetLastIndexOfChar(string, char, int, int)" method, and implement the method using recursion.
-            // The method should return the position of a "value" char in the "str" string. If "str" string has no "value" char then returns -1.
-            throw new NotImplementedException();
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            return FindChar(str, value, count, startIndex);
+        }
+
+        public static int FindChar(string str, char value, int count, int startIndex = 0)
+        {
+            if (startIndex >= str?.Length)
+            {
+                return -1;
+            }
+
+            if (str[startIndex] == value)
+            {
+                return startIndex;
+            }
+
+            startIndex++;
+            count--;
+
+            if (count == 0)
+            {
+                return -1;
+            }
+
+            return FindChar(str, value, count, startIndex);
         }
     }
 }
